@@ -1,7 +1,29 @@
 import { HStack, VStack, Text, Flex, Pressable, Image, Box, Spacer, ZStack, Center, Circle, Button, Heading } from "native-base"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 export const Homepage = () => {
+
+    const [dimensions, setDimensions] = useState({
+        height: window.innerHeight,
+        width: window.innerWidth
+    })
+    useEffect(() => {
+        function handleResize() {
+            setDimensions({
+                height: window.innerHeight,
+                width: window.innerWidth
+            })
+
+        }
+
+        window.addEventListener('resize', handleResize)
+
+        return _ => {
+            window.removeEventListener('resize', handleResize)
+
+        }
+    })
+
     return (
         <VStack
             flex={1}>
@@ -204,7 +226,7 @@ const ServiceCard = ({ flex }) => {
                     Services
                 </Heading>
                 <Text
-                    p = {8}
+                    p={8}
                     color="gray.300">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                     sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -245,7 +267,7 @@ const ServiceInfo = ({ flex }) => {
             <Button
                 width={300}
                 mt={10}
-                colorScheme = "amber"
+                colorScheme="amber"
                 height="56px">
                 Download Cv
             </Button>
