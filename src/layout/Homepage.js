@@ -1,4 +1,4 @@
-import { HStack, VStack, Text, Flex, Pressable, Image, Box, Spacer, ZStack, Center, Circle, Button } from "native-base"
+import { HStack, VStack, Text, Flex, Pressable, Image, Box, Spacer, ZStack, Center, Circle, Button, Heading } from "native-base"
 import { useState } from "react"
 
 export const Homepage = () => {
@@ -7,7 +7,6 @@ export const Homepage = () => {
             flex={1}>
             <NavBar />
             <Header />
-            <Spacer />
             <Footer />
         </VStack>
     )
@@ -119,11 +118,11 @@ const Footer = () => {
     return (
         <Flex
             mt={20}
+            mx={10}
             flex={1}
-
-            flexDirection="row">
+            flexDirection={["column", "column", "column", "row", "row"]}>
             <VStack
-                flex={0.3}
+                flex={8}
                 height={300}>
                 <AchievementCard
                     bg="#DCA69C"
@@ -135,8 +134,10 @@ const Footer = () => {
                     bgText="Award winner"
                     circleText="12" />
             </VStack>
-            <ServiceCard />
-            <ServiceInfo />
+            <Box flex={1} />
+            <ServiceCard flex={8} />
+            <Box flex={1} />
+            <ServiceInfo flex={8} />
         </Flex>
     )
 }
@@ -146,7 +147,7 @@ const AchievementCard = ({ bg, bgText, circleText }) => {
         <HStack
             flexDirection="row"
             alignItems="center"
-            ml={10}
+            // ml={10}
             bg={bg}
             borderRadius={10}
             height={20}>
@@ -188,23 +189,41 @@ const AchievementCard = ({ bg, bgText, circleText }) => {
     )
 }
 
-const ServiceCard = () => {
+const ServiceCard = ({ flex }) => {
     return (
         <Box
-            ml={4}
+            // ml={4}
             flexDirection="column"
-            flex={0.3}>
-            <Box flex={1}
+            flex={flex}>
+            <VStack flex={1}
                 borderRadius={10}
-                bg="#9C6FE7" />
+                alignItems="center"
+                bg="#9C6FE7" >
+                <Heading
+                    color="white">
+                    Services
+                </Heading>
+                <Text
+                    p = {8}
+                    color="gray.300">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </Text>
+            </VStack>
         </Box>
     )
 }
 
-const ServiceInfo = () => {
+const ServiceInfo = ({ flex }) => {
     return (
-        <VStack flex={0.3}
-            ml={10}>
+        <VStack flex={flex}>
             <Text
                 fontSize={["3xl", "4xl", "5xl"]}
                 color="black"
@@ -224,8 +243,9 @@ const ServiceInfo = () => {
                 sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
             </Text>
             <Button
-                width = {300}
-                mt = {10}
+                width={300}
+                mt={10}
+                colorScheme = "amber"
                 height="56px">
                 Download Cv
             </Button>

@@ -18,6 +18,10 @@ const theme = extendTheme({
       800: "#005885",
       900: "#003F5E",
     },
+
+    amber: {
+      400: '#d97706',
+    },
   },
   config: {
     initialColorMode: "light",
